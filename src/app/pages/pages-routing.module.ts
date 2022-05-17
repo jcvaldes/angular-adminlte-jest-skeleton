@@ -1,36 +1,25 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart/cart.component';
+import { CommonModule } from '@angular/common';
+import { PagesComponent } from './pages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsersComponent } from './users/users.component';
+import { ProductsComponent } from './products/products.component';
 
-
-export const routes: Routes = [
+const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'cart',
-    component: CartComponent
-  },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  { path: '**',
-    redirectTo: '/home',
-    pathMatch: 'full'
+    path: 'dashboard',
+    component: PagesComponent,
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'products', component: ProductsComponent },
+    ],
   },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy' }),
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-
 export class PagesRoutingModule {}

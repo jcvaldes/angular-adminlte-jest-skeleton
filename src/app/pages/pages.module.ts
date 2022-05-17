@@ -1,33 +1,21 @@
-
 import { NgModule } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
-
 import { PagesRoutingModule } from './pages-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { PagesComponent } from './pages.component';
-import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart/cart.component';
-import { NavModule } from '../nav/nav.module';
-import { ReduceTextPipe } from '../pipes/reduce-text/reduce-text.pipe';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsersComponent } from './users/users.component';
+import { ProductsComponent } from './products/products.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    CommonModule,
-    NavModule,
-    PagesRoutingModule,
-  ],
   declarations: [
+    DashboardComponent,
+    UsersComponent,
+    ProductsComponent,
     PagesComponent,
-    HomeComponent,
-    CartComponent,
-    ReduceTextPipe,
   ],
-  exports: [
-    PagesComponent,
-  ]
+  imports: [CommonModule, PagesRoutingModule, SharedModule],
+  exports: [DashboardComponent, UsersComponent, ProductsComponent],
 })
-export class PagesModule { }
-
+export class PagesModule {}
