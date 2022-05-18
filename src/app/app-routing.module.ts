@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthModule } from './auth/auth.module';
-import { NopageFoundComponent } from './nopage-found/nopage-found.component';
-import { AuthRoutingModule } from './auth/auth-routing.module';
-import { PagesRoutingModule } from './pages/pages-routing.module';
+import { HomePageComponent } from '@modules/home/pages/home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', component: NopageFoundComponent },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import(`./modules/auth/auth.module`).then((m) => m.AuthModule),
+  },
+  {
+    path: '',
+    component: HomePageComponent,
+    loadChildren: () =>
+      import(`./modules/home/home.module`).then((m) => m.HomeModule),
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes),
-    PagesRoutingModule,
-    AuthRoutingModule,
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
