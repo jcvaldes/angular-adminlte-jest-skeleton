@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "adminlte-1ae6b": {
+      "hosting": {
+        "angular-jest-skeleton": [
+          "adminlte-1ae6b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "adminlte-1ae6b"
+  }
+}

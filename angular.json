@@ -85,6 +85,16 @@
           "options": {
             "browserTarget": "angular-jest-skeleton:build"
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-jest-skeleton:build:production",
+            "firebaseProject": "adminlte-1ae6b",
+            "firebaseHostingSite": "adminlte-1ae6b"
+          }
         }
       }
     }
