@@ -12,24 +12,22 @@ declare var $: any;
 })
 export class SidebarComponent implements OnInit {
   menuItems: MenuItem[];
-  user: any;
-  constructor(
-    private sidebar: SidebarService,
-    private router: Router,
-    private authSvc: AuthService
-  ) {
+  email: string;
+  photoURL: any;
+  constructor(private sidebar: SidebarService, private authSvc: AuthService) {
     this.menuItems = this.sidebar.menu;
   }
 
   ngOnInit(): void {
-    // $('[data-widget="treeview"]').Treeview('init');
+    this.getUserInfo();
+    $('[data-widget="treeview"]').Treeview('init');
   }
-  async obtenerUsuario() {
-    this.user = await this.authSvc.getCurrentUser();
-    // if (this.user) {
-    //   this.user = this.usuario.email;
-    //   this.userImgGoogle = this.usuario.photoURL;
-    // }
+  async getUserInfo() {
+    const user = await this.authSvc.getCurrentUser();
+    if (user) {
+      this.email = user.email;
+      this.photoURL = user.photoURL;
+    }
   }
   logout() {
     this.authSvc.logout();

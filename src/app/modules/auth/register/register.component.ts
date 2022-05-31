@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
     this.authSvc
       .register(this.registerForm.value.email, this.registerForm.value.password)
       .then((resp) => {
-        debugger;
         Swal.fire({
           icon: 'success',
           title: 'Gracias por registrarse',
@@ -37,7 +36,7 @@ export class RegisterComponent implements OnInit {
           if (result.value) {
             localStorage.removeItem('email');
             localStorage.removeItem('remember');
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/auth/login');
           }
         });
       })

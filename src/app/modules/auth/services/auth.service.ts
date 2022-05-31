@@ -41,6 +41,10 @@ export class AuthService {
     }
   }
 
+  async getCurrentUser() {
+    return await firstValueFrom(this.authUser.authState);
+  }
+
   async register(email: string, password: string): Promise<any> {
     try {
       const result = await this.authUser.createUserWithEmailAndPassword(
@@ -63,14 +67,4 @@ export class AuthService {
       console.log(error);
     }
   }
-
-  async getCurrentUser() {
-    return await firstValueFrom(this.authUser.authState);
-  }
-
-  /*  getCurrentUser(){
-
-    this.authUser.authState.pipe(first()).toPromise()
-
-  } */
 }

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
     email: [
-      localStorage.getItem('email') || 'joaquin@gmail.com',
+      localStorage.getItem('email') || 'idevkingos@gmail.com',
       [Validators.required, Validators.email],
     ],
     password: ['123456', [Validators.required]],
@@ -31,13 +31,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   async onGoogleLogin() {
-    // try {
-    //   await this.authSvc.loginGoogle().then(() => {
-    //     this.router.navigateByUrl('dashboard');
-    //   });
-    // } catch (error: any) {
-    //   Swal.fire('ERROR', error.message, 'error');
-    // }
+    try {
+      await this.authSvc.loginGoogle().then(() => {
+        this.router.navigateByUrl('/');
+      });
+    } catch (error: any) {
+      Swal.fire('ERROR', error.message, 'error');
+    }
   }
 
   async login() {
@@ -45,11 +45,10 @@ export class LoginComponent implements OnInit {
       await this.authSvc
         .login(this.loginForm.value.email, this.loginForm.value.password)
         .then((user: any) => {
-          this.router.navigateByUrl('/');
-          return;
           if (user && user.user.emailVerified) {
+            this.router.navigateByUrl('/');
           } else if (user) {
-            this.router.navigateByUrl('/verificar-email');
+            this.router.navigateByUrl('/auth/verification-email');
           } else {
             Swal.fire({
               icon: 'error',
