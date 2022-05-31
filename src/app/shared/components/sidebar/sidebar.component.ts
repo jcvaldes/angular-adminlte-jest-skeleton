@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    $('[data-widget="treeview"]').Treeview('init');
+    // $('[data-widget="treeview"]').Treeview('init');
   }
   async obtenerUsuario() {
     this.user = await this.authSvc.getCurrentUser();
