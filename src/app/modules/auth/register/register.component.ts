@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Gracias por registrarse',
-          text: `Se le envio un email de verificación a ${resp.user.email}`,
+          text: `Se le envió un email de verificación a ${resp.user.email}`,
           confirmButtonText: 'Aceptar',
         }).then((result) => {
           if (result.value) {
