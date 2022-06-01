@@ -18,6 +18,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('@modules/users/users.module').then((m) => m.UsersModule),
   },
+  {
+    path: 'products',
+    data: { title: 'Productos' },
+    loadChildren: () =>
+      import('@modules/products/products.module').then((m) => m.ProductsModule),
+  },
 ];
 
 @NgModule({
