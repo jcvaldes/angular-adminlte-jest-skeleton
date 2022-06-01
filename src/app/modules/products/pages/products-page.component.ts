@@ -53,7 +53,8 @@ export class ProductsPageComponent implements OnInit {
       icon: 'question',
       title: `Desea eliminar el producto ${product.name}?`,
       showCancelButton: true,
-      confirmButtonText: 'Sí',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
       allowOutsideClick: false,
     }).then((result) => {
       if (result.isConfirmed) {
